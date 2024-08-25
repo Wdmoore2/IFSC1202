@@ -1,4 +1,8 @@
 n=input("how many students?")
 k=input("How many apples do you have?")
-print ,int(n/k); 
-print, int(n%k);
+print ("Each student will receive") 
+devide = int(k)//int(n)
+print (devide) 
+print ("apples")
+print (float(k)%float(n)) 
+print ("apples remaining")
