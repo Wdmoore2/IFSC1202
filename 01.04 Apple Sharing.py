@@ -1,7 +1,7 @@
 n=input("how many students?")
 k=input("How many apples do you have?")
 print ("Each student will receive") 
-devide = int(k)//int(n)
+devide =int(k)//int(n)
 print (devide) 
 print ("apples")
 print (float(k)%float(n)) 

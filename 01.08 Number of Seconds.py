@@ -1,0 +1,6 @@
+m=input("Enter Minutes:")
+s=input("Enter Seconds:") 
+m=str(input)*(60) 
+s=str(input)*(1) 
+total = str(m) + str(s) 
+print (total)
