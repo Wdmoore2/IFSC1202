@@ -1,15 +1,14 @@
 f =float(input("Enter First Number:"))
 o =(input("Enter Operator:+,-,*,/:"))
 s =float(input("Enter Second Number"))
-if o == "+":
-    print (f+s)
+result=str(f)+(o)+str(s)+("=")
+if o=="+":
+    print (result, f+s)
 elif o == "-":
-    print (f-s)
-elif o == '*':
-    print (f*s)
-elif o == "/": 
-    print (f/s)
+    print (result,f-s)
+elif o== '*':
+    print (result,f*s)
+elif o== "/": 
+    print (result,f/s)
 else: 
     print("Invalid Operator") 
-
-
