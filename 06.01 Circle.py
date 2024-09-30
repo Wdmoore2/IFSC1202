@@ -5,7 +5,7 @@ def circumference(radius):
     return 2 * math.pi * radius
 def area (radius):
     return math.pi * radius ** 2 
-with open('06.01 Radius.txt', 'r') as file:
+with open('06.01Radius.txt', 'r') as file:
     radii = file.readlines()
 print(f"{'Radius':>15}{'Diameter':>15}{'Circumference':>15}{'Area':>15}")
 for line in radii:
