@@ -9,7 +9,7 @@ def merge_files(input_file, merge_file, output_file):
                 if '**Insert Merge File Here**' in line:
                     with open(merge_file, 'r') as merge:
                         for merge_line in merge:
-                            output.write(merge_line)
+                            output.write(merge_line.strip()+'\n')
                             merge_record_count += 1
                             output_record_count += 1
                 else:
