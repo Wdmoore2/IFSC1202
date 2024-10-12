@@ -1,11 +1,6 @@
 The quick
-The quick
-brown fox
 brown fox
 jumps
-jumps
-over the lazy
 over the lazy
 dog's
-dog's
-backback
+back
