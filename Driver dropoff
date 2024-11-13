@@ -1,0 +1,60 @@
+from datetime import datetime
+
+def get_driver_info():
+    name = input("Enter driver's name: ")
+    on_time = input("Enter scheduled on time (HH:MM): ")
+    off_time = input("Enter scheduled off time (HH:MM): ")
+    return name, datetime.strptime(on_time, '%H:%M'), datetime.strptime(off_time, '%H:%M')
+
+def calculate_schedules(drivers):
+    drivers.sort(key=lambda x: x[1])  # Sort by on-time
+    drop_off_schedule = {}
+    pick_up_schedule = {}
+    car_handoff_schedule = []
+    
+    for i in range(len(drivers)):
+        if i == 0:
+            drop_off_schedule[drivers[i][0]] = "No one to drop off"
+        else:
+            drop_off_schedule[drivers[i][0]] = f"{drivers[i-1][0]} (On-time: {drivers[i-1][1].strftime('%H:%M')}, Off-time: {drivers[i-1][2].strftime('%H:%M')})"
+    
+    for i in range(len(drivers)):
+        if i == len(drivers) - 1:
+            pick_up_schedule[drivers[i][0]] = f"{drivers[0][0]} (On-time: {drivers[0][1].strftime('%H:%M')}, Off-time: {drivers[0][2].strftime('%H:%M')})"
+        else:
+            pick_up_schedule[drivers[i][0]] = f"{drivers[i+1][0]} (On-time: {drivers[i+1][1].strftime('%H:%M')}, Off-time: {drivers[i+1][2].strftime('%H:%M')})"
+    
+    for i in range(len(drivers) - 1):
+        if drivers[i][2] > drivers[i+1][1]:
+            car_handoff_schedule.append(f"{drivers[i][0]} should hand off car to {drivers[i+1][0]} before {drivers[i+1][1].strftime('%H:%M')}")
+    
+    # Adjust pick-up schedule to ensure no conflicts
+    for i in range(len(drivers)):
+        if i == 0:
+            continue
+        if drivers[i][1] < drivers[i-1][2]:
+            pick_up_schedule[drivers[i-1][0]] = f"{drivers[i][0]} (On-time: {drivers[i][1].strftime('%H:%M')}, Off-time: {drivers[i][2].strftime('%H:%M')})"
+    
+    return drop_off_schedule, pick_up_schedule, car_handoff_schedule
+
+def main():
+    drivers = []
+    for _ in range(3):
+        drivers.append(get_driver_info())
+    
+    drop_off_schedule, pick_up_schedule, car_handoff_schedule = calculate_schedules(drivers)
+    
+    print("\nDrop-off Schedule:")
+    for driver, drop_off in drop_off_schedule.items():
+        print(f"{driver} should drop off {drop_off}")
+    
+    print("\nPick-up Schedule:")
+    for driver, pick_up in pick_up_schedule.items():
+        print(f"{driver} should pick up {pick_up}")
+    
+    print("\nCar Handoff Schedule:")
+    for handoff in car_handoff_schedule:
+        print(handoff)
+
+if __name__ == "__main__":
+    main()

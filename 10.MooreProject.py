@@ -36,10 +36,10 @@ def main():
             student = Student(firstname, lastname, tnumber, scores)
             students.append(student)
 
-    print(f"{'First Name':<12} {'Last Name':<12} {'ID':<12} {'Running Average':<12} {'Semester Average':<12} {'Letter Grade':<12}")
-    print('-' * 72)
+    print(f"{'First Name':<10} {'Last Name':<10} {'ID':<8} {'Running Avg':<12} {'Semester Avg':<12} {'Grade':<6}")
+    print('-' * 60)
     for student in students:
-        print(f"{student.firstname:<12} {student.lastname:<12} {student.tnumber:<12} {student.RunningAverage():<12.2f} {student.TotalAverage():<12.2f} {student.LetterGrade():<12}")
+        print(f"{student.firstname:<10} {student.lastname:<10} {student.tnumber:<8} {student.RunningAverage():<12.2f} {student.TotalAverage():<12.2f} {student.LetterGrade():<6}")
 
 if __name__ == "__main__":
     main()
